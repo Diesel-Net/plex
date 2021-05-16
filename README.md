@@ -1,2 +1,2 @@
-# plex-media-server
+# plex
 Plex Media Server automation
