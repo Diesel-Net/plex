@@ -1,0 +1,14 @@
+# ansible-galaxy install -r .ansible/roles/requirements.update.yaml -p .ansible/roles --force
+# ansible-playbook .ansible/update.yaml -i .ansible/inventory/production/hosts --vault-id ~/.tokens/master_id
+
+- hosts: plex
+  strategy: free
+  vars:
+    ansible_user: "{{ lookup('env', 'SUPER_USER') }}"
+    ansible_ssh_pass: "{{ lookup('env','SUPER_PASS') }}"
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+
+  tasks:
+    - import_role:
+        name: ubuntu_base
+        tasks_from: update
