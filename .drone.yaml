@@ -13,7 +13,7 @@ steps:
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
       SUPER_USER:
-          from_secret: super_user
+        from_secret: super_user
       SUPER_PASS:
         from_secret: super_pass
     settings:
