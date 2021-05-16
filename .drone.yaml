@@ -29,5 +29,5 @@ trigger:
   event:
     - cron
   cron:
-    - daily-updates
+    - daily_updates
 ...
