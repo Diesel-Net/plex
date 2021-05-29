@@ -1,4 +1,4 @@
-[![Build Status](https://drone-ci.hopto.org/api/badges/Diesel-Net/plex/status.svg)](https://drone-ci.hopto.org/Diesel-Net/plex)
+[![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/plex/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/plex)
 
 # plex
 Plex Media Server automation
