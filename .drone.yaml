@@ -21,7 +21,7 @@ steps:
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/production
       private_key:
-        from_secret: ansible_private_key
+        from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
 
