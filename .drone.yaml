@@ -17,7 +17,7 @@ steps:
       SUPER_PASS:
         from_secret: super_pass
     settings:
-      galaxy: .ansible/roles/requirements.update.yaml
+      galaxy: .ansible/roles/requirements.yaml
       playbook: .ansible/update.yaml
       inventory: .ansible/inventory/production
       private_key:
