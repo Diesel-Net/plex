@@ -8,7 +8,7 @@ Plex Media Server automation
 
 ## Installing Dependencies
 ```bash
-ansible-galaxy install -r .ansible/roles/requirements.update.yaml -p .ansible/roles --force
+ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
 ```
 
 ## Update packages (Plex, Nvidia drivers & more)
