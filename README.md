@@ -8,11 +8,11 @@ Plex Media Server automation
 
 ## Installing Dependencies
 ```bash
-ansible-galaxy install -r .ansible/roles/requirements.update.yaml -p .ansible/roles --force
+ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
 ```
 
 ## Update packages (Plex, Nvidia drivers & more)
-Right now each environment is defined as an independent Virtual Machine (single-node swarm leaders)
+You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
 ```bash
-ansible-playbook .ansible/update.yaml -i .ansible/inventory/production/hosts --vault-id ~/.tokens/master_id
+ansible-playbook .ansible/update.yaml -i .ansible/inventory/production
 ```

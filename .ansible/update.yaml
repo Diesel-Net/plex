@@ -1,6 +1,3 @@
-# ansible-galaxy install -r .ansible/roles/requirements.update.yaml -p .ansible/roles --force
-# ansible-playbook .ansible/update.yaml -i .ansible/inventory/production/hosts --vault-id ~/.tokens/master_id
-
 - hosts: plex
   strategy: free
   vars:
