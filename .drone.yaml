@@ -1,33 +1,56 @@
 ---
-
 kind: pipeline
 type: docker
-name: daily updates pipeline
-
-clone:
-  depth: 1
+name: deploy (development)
 
 steps:
-  - name: Update plex server(s)
+  - name: deploy plex media server
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
-      SUPER_USER:
-        from_secret: super_user
-      SUPER_PASS:
-        from_secret: super_pass
     settings:
       galaxy: .ansible/roles/requirements.yaml
-      playbook: .ansible/update.yaml
-      inventory: .ansible/inventory/production
+      inventory: .ansible/inventories/development
+      playbook: .ansible/deploy.yaml
       private_key:
         from_secret: automation_id_rsa
       vault_password:
         from_secret: ansible_vault_password
+    commands:
+      # dynamically select inventory based on git branch
+      - version=$DRONE_BRANCH
+      - if [ ! -z $DRONE_TAG ]; then version=production; fi
+      - /bin/drone-ansible --inventory .ansible/inventories/$$version/hosts
 
 trigger:
   event:
-    - cron
-  cron:
-    - daily_maintenance
+    - push
+  branch:
+    - development
+
+---
+kind: pipeline
+type: docker
+name: deploy (production)
+
+steps:
+  - name: deploy plex media server
+    image: plugins/ansible:3
+    environment:
+      ANSIBLE_CONFIG: .ansible/ansible.cfg
+    settings:
+      galaxy: .ansible/roles/requirements.yaml
+      inventory: .ansible/inventories/production
+      playbook: .ansible/deploy.yaml
+      private_key:
+        from_secret: automation_id_rsa
+      vault_password:
+        from_secret: ansible_vault_password
+      extra_vars: version=production
+
+trigger:
+  event:
+    - push
+  branch:
+    - stable
 ...
