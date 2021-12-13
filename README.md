@@ -6,8 +6,9 @@ Plex Media Server on docker swarm running on Ubuntu Server LTS 20.04.3 (Focal Fo
 ## Features/Notes
 - [x] Nvidia Driver installation 
 - [x] Nvidia Docker configuration
-- [x] Official Plex Media Server docker image
+- [x] Official PMS docker image
 - [x] Factored-out library (docker volumes [NFSv4 driver](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
+- [x] Factored-out PMS configuration
 
 ## Toolchain
 - ansible-core `2.11.5`
