@@ -15,12 +15,12 @@ Plex Media Server on docker swarm running on Ubuntu Server LTS 20.04.3 (Focal Fo
 - ansible `4.6.0`
 - docker `20.10.11`
 
-## Installing Dependencies
+## Install Dependencies
 ```bash
 ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
 ```
 
-## Update packages (Plex, Nvidia drivers & more)
+## Configure and Deploy
 You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
 ```bash
 ansible-playbook .ansible/update.yaml -i .ansible/inventories/development
