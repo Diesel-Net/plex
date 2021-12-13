@@ -1,7 +1,7 @@
 [![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/plex/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/plex)
 
 # plex
-Plex Media Server on docker swarm running on Ubuntu Server LTS 20.04.3 (Focal Fossa). The virtual host was bootstrapped with [swarm-bootstrapper](https://github.com/Diesel-Net/swarm-bootstrapper). An _Nvidia Quadro P2200_ has been [configured for use with docker on the host](https://github.com/NVIDIA/nvidia-docker). This allows me to use the GPU's compute/transcoder with additional containers concurrently with plex! :tada:
+Plex Media Server on docker swarm running on Ubuntu Server LTS 20.04.3 (Focal Fossa). The virtual host was bootstrapped with [swarm-bootstrapper](https://github.com/Diesel-Net/swarm-bootstrapper). An **Nvidia Quadro P2200** has been [configured for use with docker](https://github.com/NVIDIA/nvidia-docker) on the host. This allows me to use the GPU's compute/transcoder with other additional containers concurrently with plex! :tada:
 
 ## Features/Notes
 - [x] Nvidia Driver installation 
