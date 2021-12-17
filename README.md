@@ -14,9 +14,9 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Factored-out Plex Media Server configuration
 
 ## Toolchain
-- ansible-core `2.11.5`
-- ansible `4.6.0`
-- docker `20.10.11`
+- python `3.9.9`
+- ansible-core `2.12.1`
+- ansible `5.0.1`
 
 ## Install Dependencies
 ```bash
