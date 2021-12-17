@@ -5,6 +5,14 @@
   tasks:
 
     - include_role:
+        name: ubuntu
+        tasks_from: install_nvidia_drivers
+
+    - include_role:
+        name: docker
+        tasks_from: install_nvidia_toolkit
+
+    - include_role:
         name: common
         tasks_from: make_config_dir
 
