@@ -2,11 +2,10 @@ sudo apt install --no-install-recommends nvidia-cuda-toolkit nvidia-headless-470
 
 
 
-
 distribution=$(. /etc/os-release;echo $ID$VERSION_ID) \
    && curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add - \
    && curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
-   
+
 
 
 rsync -avh --no-compress --progress tv_shows /mnt/Media
@@ -21,8 +20,6 @@ qm set 125 -efidisk0 local-zfs:1,format=<format>,efitype=4m,pre-enrolled-keys=1
 
 Need to use UEFI and q35 machine
 Switch to q35 machine architecture
-
-
 
 
 Now I am trying to figure out whether the driver install should be a part of an ansible role?
