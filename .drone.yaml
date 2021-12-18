@@ -8,8 +8,8 @@ steps:
     image: plugins/ansible:3
     environment:
       ANSIBLE_CONFIG: .ansible/ansible.cfg
-      CLAIM_TOKEN:
-        from_secret: claim_token
+      PLEX_CLAIM_TOKEN:
+        from_secret: plex_claim_token
     settings:
       galaxy: .ansible/roles/requirements.yaml
       inventory: .ansible/inventories/development
