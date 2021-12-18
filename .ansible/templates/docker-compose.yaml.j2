@@ -1,0 +1,28 @@
+version: '3.8'
+services: 
+
+  media-server:
+    image: linuxserver/plex
+    hostname: {{ plex_host }}
+    ports:
+{% for port in plex_ports %}
+      - {{ port['host'] }}:{{ port['docker'] }}/{{ port['proto'] }}
+{% endfor %}
+    environment:
+      - PLEX_UID={{ plex_user_id }}
+      - PLEX_GID={{ plex_group_id }}
+      - TZ={{ local_timezone }}
+      - PLEX_CLAIM={{ plex_claim_token }}
+      - ADVERTISE_IP=http://{{ ansible_default_ipv4['address'] }}:{{ plex_web_port }}/
+    volumes:
+      - {{ config_dir }}:/config
+      - {{ data_dir }}:/transcode
+      - synology_nas:/data
+    devices:
+      # TODO: by pci_id lookup?
+      - /dev/dri/by-path/pci-{{ gpu_pci_device_id }}-card:/dev/dri/card0
+      - /dev/dri/by-path/pci-{{ gpu_pci_device_id }}-render:/dev/dri/renderD128
+    
+
+volumes:
+  # TODO: nfsv4 mount
