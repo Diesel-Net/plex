@@ -2,7 +2,7 @@ version: '3.8'
 services: 
 
   media-server:
-    image: linuxserver/plex
+    image: plex-inc/pms-docker:public
     hostname: {{ plex_host }}
     ports:
 {% for port in plex_ports %}
