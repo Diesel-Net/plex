@@ -16,6 +16,7 @@ services:
       - ADVERTISE_IP=http://{{ ansible_default_ipv4['address'] }}:{{ plex_web_port }}/
       - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
       - NVIDIA_VISIBLE_DEVICES=all
+      - CUDA_DRIVER_CAPABILITIES=compute,video,utility
     volumes:
       - {{ config_dir }}:/config
       - {{ data_dir }}:/transcode
