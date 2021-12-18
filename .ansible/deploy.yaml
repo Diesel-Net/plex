@@ -19,5 +19,23 @@
     - include_role:
         name: common
         tasks_from: make_data_dir
-
     
+    - name: allow ports through firewall on host
+      ufw:
+        rule: allow
+        port: '{{ port['host'] }}'
+        proto: '{{ port['proto'] }}'
+      become: yes
+      loop: '{{ plex_ports }}'
+      loop_control:
+        loop_var: port
+
+    - name: reload firewall and enable at boot
+      ufw:
+        state: enabled
+        policy: deny
+      become: yes
+
+    # - include_role:
+    #     name: docker
+    #     tasks_from: stack_deploy
