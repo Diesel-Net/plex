@@ -1,6 +1,6 @@
 plex_web_port: 32400
 plex_ports:
-  - host: {{ plex_web_port }}
+  - host: "{{ plex_web_port }}"
     docker: 32400
     proto: tcp
   - host: 1900
