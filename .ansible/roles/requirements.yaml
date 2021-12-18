@@ -6,7 +6,7 @@
 - name: ubuntu
   scm: git
   src: "git@github.com:Diesel-Net/ansible-role-ubuntu.git"
-  version: 2.4.1
+  version: 2.4.0
 
 - name: docker
   scm: git
