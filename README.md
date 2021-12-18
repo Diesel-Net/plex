@@ -13,6 +13,12 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Factored-out library (using docker volumes [NFSv4 driver](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
 - [x] Factored-out Plex Media Server configuration
 
+## Issues with Nvidia GPUs on Docker Swarm
+So after putting in all the work, I found out that nvidia-gpu support of docker swarm is broken. I'm now starting to find all these hacky workaround that people are suggesting. I do not need to run multi-node swarms anyways, so If I have to migrate to using just docker-compose, I guess I will.
+- [GitHub Issue](https://github.com/docker/swarmkit/issues/1244)
+- [GitHub Gist Hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
+
+
 ## Toolchain
 - python `3.9.9`
 - ansible-core `2.12.1`
