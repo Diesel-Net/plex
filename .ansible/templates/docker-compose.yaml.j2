@@ -27,6 +27,8 @@ volumes:
   nas-media:
     driver: local
     driver_opts:
+      # requires `nfs-common` on debian
+      # OR `nfs-client` on CentOS/Fedora
       type: nfs
-      o: addr=192.168.50.99,r,nfsver=4
+      o: addr=192.168.50.99,r,nfsver=4,async
       device: ":/volume1/Media"
