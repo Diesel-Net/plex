@@ -17,12 +17,16 @@ services:
     volumes:
       - {{ config_dir }}:/config
       - {{ data_dir }}:/transcode
-      - synology_nas:/data
+      - nas-media:/data
     devices:
-      # TODO: by pci_id lookup?
-      - /dev/dri/by-path/pci-{{ gpu_pci_device_id }}-card:/dev/dri/card0
-      - /dev/dri/by-path/pci-{{ gpu_pci_device_id }}-render:/dev/dri/renderD128
-    
+      - /dev/dri/by-path/pci-{{ nvidia_pci_device_id }}-card:/dev/dri/card0
+      - /dev/dri/by-path/pci-{{ nvidia_pci_device_id }}-render:/dev/dri/renderD128
+
 
 volumes:
-  # TODO: nfsv4 mount
+  nas-media:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=192.168.50.99,r,nfsver=4,async
+      device: ":/volume1/Media"
