@@ -19,6 +19,13 @@ So after putting in all the work, I found out that nvidia-gpu support of docker 
 - [GitHub issue](https://github.com/docker/swarmkit/issues/1244)
 - [GitHub Gist hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
 - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
+- [Guide to generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
+- I am so confused....
+  - https://github.com/NVIDIA/nvidia-docker/issues/1268
+  - https://github.com/NVIDIA/nvidia-docker/issues/1035
+  - Like which one are we supposed to use?
+    - What I'm understanding is that they've since patched docker-nvidia2, so that is now a "thin" wrappper around the toolkit. So maybe it does not matter.
+    - My `/etc/docker/daemon.json` file does not have the nvidia runtime installed from `nvidia-docker2`, however calling docker with `--gpu` flag works. How do you use this flag on docker swarm? 
 
 ## Toolchain
 - python `3.9.9`
