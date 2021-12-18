@@ -1,0 +1,43 @@
+plex_web_port: 32400
+plex_ports:
+  - host: "{{ plex_web_port }}"
+    docker: 32400
+    proto: tcp
+  - host: 1900
+    docker: 1900
+    proto: udp
+  - host: 3005
+    docker: 3005
+    proto: tcp
+  - host: 5353
+    docker: 5353
+    proto: udp
+  - host: 8324
+    docker: 8324
+    proto: tcp
+  - host: 32410
+    docker: 32410
+    proto: udp
+  - host: 32412
+    docker: 32412
+    proto: udp
+  - host: 32413
+    docker: 32413
+    proto: udp
+  - host: 32414
+    docker: 32414
+    proto: udp
+  - host: 32469
+    docker: 32469
+    proto: tcp
+
+plex_user_id: "{{ ansible_user_uid }}"
+plex_group_id: "{{ ansible_user_gid }}"
+
+plex_host: '{{ inventory_hostname }}'
+local_timezone: America/Los_Angeles
+plex_claim_token: "{{ lookup('env','CLAIM_TOKEN') }}"
+
+# to grab id, you run the following command on host:
+# lspci -D | grep NVIDIA | cut -d" " -f 1 | head -1
+nvidia_pci_device_id: 0000:01:00.0

@@ -1,5 +1,0 @@
-all:
-  children:
-    plex:
-      hosts:
-        plex.diesel.net
