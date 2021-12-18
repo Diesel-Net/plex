@@ -35,3 +35,8 @@ Or do we just hardcode them into the playbooks for now?
 reusablility (other repos that might want the same stuff isntalled):
     - plex
     - AI/ML applications
+
+
+UGHhh... :((  after all that work, I found out that nvidia-gpu support of docker swarm is super flaky and im starting to find all these hacky vague instructions on how to get it working..
+
+https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c
