@@ -10,6 +10,7 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Nvidia Driver installation 
 - [x] [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker) installation
 - [x] Official [Plex Media Server docker image](https://github.com/plexinc/pms-docker)
+  - Grab your Plex Claim Token [here](https://www.plex.tv/claim/)
 - [x] Factored-out library (using docker volumes [NFSv4 driver](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
 - [x] Factored-out Plex Media Server configuration
 
