@@ -23,10 +23,10 @@
     - name: allow ports through firewall on host
       ufw:
         rule: allow
-        port: '{{ port['host'] }}'
-        proto: '{{ port['proto'] }}'
+        port: "{{ port['host'] }}"
+        proto: "{{ port['proto'] }}"
       become: yes
-      loop: '{{ plex_ports }}'
+      loop: "{{ plex_ports }}"
       loop_control:
         loop_var: port
 
