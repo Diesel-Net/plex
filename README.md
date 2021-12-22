@@ -7,7 +7,7 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Proxmox VE [GPU Passthrough](https://pve.proxmox.com/wiki/Pci_passthrough#GPU_Passthrough)
 - [x] [Ubuntu Server 20.04.3 LTS](https://releases.ubuntu.com/20.04/) (Focal Fossa)
 - [x] [Docker Swarm](https://docs.docker.com/engine/swarm/)
-- [x] Nvidia Driver installation 
+- [x] Nvidia Driver installation
 - [x] [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker) installation
 - [x] Official [Plex Media Server docker image](https://github.com/plexinc/pms-docker)
   - [Get your Plex Claim Token](https://www.plex.tv/claim/)
@@ -16,10 +16,11 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 
 ## Issues with Nvidia GPUs on Docker Swarm
 So after putting in all the work, I found out that nvidia-gpu support of docker swarm is broken. I'm now starting to find all these hacky workaround that people are suggesting. I do not need to run multi-node swarms anyways, so If I have to migrate to using just docker-compose, I guess I will.
-- [GitHub issue](https://github.com/docker/swarmkit/issues/1244)
+- [GitHub issue #1244](https://github.com/docker/swarmkit/issues/1244)
 - [GitHub Gist hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
-- [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
-- [Guide to generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
+- Official Docker Docs - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
+- Python on Whale's user guide - [Generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
+- [Acessing GPU's from a Docker Swarm Service (2018)](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
 - I am so confused....
   - https://github.com/NVIDIA/nvidia-docker/issues/1268
   - https://github.com/NVIDIA/nvidia-docker/issues/1035
