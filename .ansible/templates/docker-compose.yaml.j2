@@ -21,8 +21,8 @@ services:
       - {{ data_dir }}:/transcode
       - nas-media:/data:ro
     devices:
-      - /dev/dri/card1:/dev/dri/card0
-      - /dev/dri/renderD129:/dev/dri/renderD128
+      - /dev/dri/by-path/pci-{{ nvidia_pci_device_id }}-card:/dev/dri/card0
+      - /dev/dri/by-path/pci-{{ nvidia_pci_device_id }}-render:/dev/dri/renderD128
 
 volumes:
   nas-media:
