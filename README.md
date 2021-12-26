@@ -28,7 +28,7 @@ Nvidia-gpu support of docker swarm is **not clearly documented** and caused me q
 - Other
   - [Super insightful Hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
     - Outdated as most of the stuff no longer applies, but helped with understanding the need to set `daemon.json` manually
-  - Python on Whale's user guide - [Generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
+  - Python on Whale's user guide - [Generic Resources on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
     - helped me understand generic swarmkit resources, which seemed to be the old "hacky way", but restricts a GPU (or any device) to a single swarm service
 - [Accessing GPU's from a Docker Swarm Service](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
   - Outdated or no longer applies, but still insightful
