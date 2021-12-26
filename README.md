@@ -15,19 +15,16 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Factored-out library (using docker [NFSv4 volume](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
 - [x] Factored-out Plex Media Server configuration
 
-## Issues with Nvidia GPUs on Docker Swarm
-So after putting in all the work, I found out that nvidia-gpu support of docker swarm is broken. I'm now starting to find all these hacky workaround that people are suggesting. I do not need to run multi-node swarms anyways, so If I have to migrate to using just docker-compose, I guess I will.
-- [GitHub issue #1244](https://github.com/docker/swarmkit/issues/1244)
-- [GitHub Gist hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
-- Official Docker Docs - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
-- Python on Whale's user guide - [Generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
+## Mass Confusion with Nvidia GPUs on Docker Swarm
+Nvidia-gpu support of docker swarm is **not clearly documented**. I personally feel that the reason for all the confusion is due to the fact that there are essentially 3 ways to
+- [#1244](https://github.com/docker/swarmkit/issues/1244)
+- [#1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
+- [#1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
+- [GitHub Gist hack?](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)(outdated kinda, but helped with understanding the need to set daemon.json manually)
+- Official Docker Docs - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources) (N/A or useless if using `docker stack deploy`)
+- Python on Whale's user guide - [Generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/) (helped me understand generic resources, which seemed to be the old "hack", but restricts a GPU to a single swarm service)
 - [Acessing GPU's from a Docker Swarm Service (2018)](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
-- I am so confused....
-  - https://github.com/NVIDIA/nvidia-docker/issues/1268
-  - https://github.com/NVIDIA/nvidia-docker/issues/1035
-  - Like which one are we supposed to use?
-    - What I'm understanding is that they've since patched docker-nvidia2, so that is now a "thin" wrappper around the toolkit. So maybe it does not matter.
-    - My `/etc/docker/daemon.json` file does not have the nvidia runtime installed from `nvidia-docker2`, however calling `docker run` with `--gpu` flag works. How do you use this flag on docker swarm? 
+   
 
 ## Toolchain
 - python `3.9.9`
