@@ -20,8 +20,9 @@ Nvidia-gpu support of docker swarm is **not clearly documented** and caused me q
 
 - Docker
   - [swarmkit #1244](https://github.com/docker/swarmkit/issues/1244)
-  - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
+  - [Passing generic resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
     - Not applicable and/or pretty much useless if using `docker stack deploy` with compose file format
+    - Not the recommended way of doing this for Nvidia specific GPUs nowadays (2021)
 - Nvidia
   - [nvidia-docker #1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
   - [nvidia-docker #1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
