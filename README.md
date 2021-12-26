@@ -23,8 +23,8 @@ Nvidia-gpu support of docker swarm is **not clearly documented** and caused me q
   - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
     - Not applicable and/or pretty much useless if using `docker stack deploy` with compose file format
 - Nvidia
-- [nvidia-docker #1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
-- [nvidia-docker #1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
+  - [nvidia-docker #1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
+  - [nvidia-docker #1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
 - Other
   - [Super insightful Hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
     - Outdated as most of the stuff no longer applies, but helped with understanding the need to set `daemon.json` manually
