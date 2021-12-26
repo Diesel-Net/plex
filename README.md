@@ -17,16 +17,17 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 
 ## Confusion with Nvidia GPUs on Docker Swarm
 Nvidia-gpu support of docker swarm is **not clearly documented** and caused me quite the headache. I still don't fully understand if `nvidia-docker2` is deprecated or not-recommended or what. I personally feel that the reason for all the confusion is due to the fact that there are essentially 3 main ways to start docker containers with automation tooling, i.e. `docker run`, `docker-compose up`, and `docker stack deploy` (swarm mode). Most of the documentation seems old and mainly deals with being able to start containers with the first two options, however I was able to get everything functioning in Docker Swarm by installing `nvidia-docker2` and then configuring `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and that's it. As long as you use the appropriate environment variables, you should be good to go hopefully :thumbsup:
-- [swarmkit#1244](https://github.com/docker/swarmkit/issues/1244)
-- [nvidia-docker#1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
-- [nvidia-docker#1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
+- [swarmkit #1244](https://github.com/docker/swarmkit/issues/1244)
+- [nvidia-docker #1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
+- [nvidia-docker #1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
 - [Super insightful Hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
   - Outdated as most of the stuff no longer applies, but helped with understanding the need to set `daemon.json` manually
 - Official Docker Docs - [Passing resources to Docker services](https://docs.docker.com/engine/reference/commandline/service_create/#create-services-requesting-generic-resources)
   - Not applicable and/or pretty much useless if using `docker stack deploy` with compose file format
 - Python on Whale's user guide - [Generic resource on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
   - helped me understand generic swarmkit resources, which seemed to be the old "hacky way", but restricts a GPU (or any device) to a single swarm service
-- [Accessing GPU's from a Docker Swarm Service (2018)](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
+- [Accessing GPU's from a Docker Swarm Service](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
+  - Outdated or no longer applies, but still insightful
    
 
 ## Manual Deployments
