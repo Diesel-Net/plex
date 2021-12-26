@@ -8,8 +8,7 @@ Plex Media Server on Docker Swarm running on headless Ubuntu Server. The virtual
 - [x] [Ubuntu Server 20.04.3 LTS](https://releases.ubuntu.com/20.04/) (Focal Fossa)
 - [x] [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [x] Nvidia Driver installation (see [Diesel-Net/ansible-role-ubuntu](https://github.com/Diesel-Net/ansible-role-ubuntu/blob/stable/tasks/install_nvidia_drivers.yaml))
-- [x] Nvidia Container Toolkit installation (see [Diesel-Net/ansible-role-docker](https://github.com/Diesel-Net/ansible-role-docker/blob/stable/tasks/install_nvidia_toolkit.yaml))
-- [x] [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker) installation
+- [x] [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker) installation (see [Diesel-Net/ansible-role-docker](https://github.com/Diesel-Net/ansible-role-docker/blob/stable/tasks/install_nvidia_toolkit.yaml))
 - [x] Official [Plex Media Server docker image](https://github.com/plexinc/pms-docker)
   - [Get your Plex Claim Token here!](https://www.plex.tv/claim/)
 - [x] Factored-out library (using docker [NFSv4 volume](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
