@@ -38,8 +38,10 @@ Nvidia-gpu support of docker swarm is **not clearly documented** and caused me q
 The below is set up to automatically configure and deploy using Drone CI, however you may use these commands to manually test and deploy or make changes if needed.
 
 ### Requirements
-Recommended way to install Ansible is with `pip` for `Python3.9+`
-- ansible `5.0.1`
+Recommended way to install Ansible is with `pip` for `Python3.9+`. Ansible `5.0.1` was used at the time of this writing.
+```bash
+pip3 install --user ansible
+```
 
 1. Install Ansible Dependencies (external roles)
 ```bash
