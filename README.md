@@ -15,8 +15,8 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Factored-out library (using docker [NFSv4 volume](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
 - [x] Factored-out Plex Media Server configuration
 
-## Mass Confusion with Nvidia GPUs on Docker Swarm
-Nvidia-gpu support of docker swarm is **not clearly documented**. I personally feel that the reason for all the confusion is due to the fact that there are essentially 3 ways to
+## Confusion with Nvidia GPUs on Docker Swarm
+Nvidia-gpu support of docker swarm is **not clearly documented** and caused me quite the headache. I still don't fully understand if `nvidia-docker2` is deprecated or not-recommended or what. I personally feel that the reason for all the confusion is due to the fact that there are essentially 3 main ways to start docker containers with automation tooling, i.e. `docker run`, `docker-compose up`, and `docker stack deploy` (swarm mode). Most of the documentation seems old and mainly deals with being able to start containers with the first two options, however I was able to get everything functioning in Docker Swarm by installing `nvidia-docker2` and then configuring `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and that's it. As long as you use the appropriate environment variables, you should be good to go hopefully :thumbsup:
 - [#1244](https://github.com/docker/swarmkit/issues/1244)
 - [#1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
 - [#1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
@@ -26,17 +26,18 @@ Nvidia-gpu support of docker swarm is **not clearly documented**. I personally f
 - [Acessing GPU's from a Docker Swarm Service (2018)](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
    
 
-## Toolchain
-- python `3.9.9`
-- ansible-core `2.12.1`
+## Manual Deployments
+The below is set up to automatically configure and deploy using Drone CI, however you may use these commands to manually test and deploy or make changes if needed.
+
+### Requirements
+Recommended way to install Ansible is with `pip` for `Python3.9+`
 - ansible `5.0.1`
 
-## Install Dependencies
+1. Install Ansible Dependencies (external roles)
 ```bash
 ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
 ```
-
-## Configure and Deploy
+2. Configure and Deploy
 You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
 ```bash
 ansible-playbook .ansible/update.yaml -i .ansible/inventories/development
