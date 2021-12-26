@@ -7,10 +7,11 @@ Plex Media Server on docker swarm running on **Ubuntu Server 20.04.3 LTS** (_Foc
 - [x] Proxmox VE [GPU Passthrough](https://pve.proxmox.com/wiki/Pci_passthrough#GPU_Passthrough)
 - [x] [Ubuntu Server 20.04.3 LTS](https://releases.ubuntu.com/20.04/) (Focal Fossa)
 - [x] [Docker Swarm](https://docs.docker.com/engine/swarm/)
-- [x] Nvidia Driver installation
+- [x] Nvidia Driver installation (see [Diesel-Net/ansible-role-ubuntu](https://github.com/Diesel-Net/ansible-role-ubuntu/blob/stable/tasks/install_nvidia_drivers.yaml))
+- [x] Nvidia Container Toolkit installation (see [Diesel-Net/ansible-role-docker](https://github.com/Diesel-Net/ansible-role-docker/blob/stable/tasks/install_nvidia_toolkit.yaml))
 - [x] [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker) installation
 - [x] Official [Plex Media Server docker image](https://github.com/plexinc/pms-docker)
-  - [Get your Plex Claim Token](https://www.plex.tv/claim/)
+  - [Get your Plex Claim Token here!](https://www.plex.tv/claim/)
 - [x] Factored-out library (using docker [NFSv4 volume](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
 - [x] Factored-out Plex Media Server configuration
 
@@ -26,7 +27,7 @@ So after putting in all the work, I found out that nvidia-gpu support of docker 
   - https://github.com/NVIDIA/nvidia-docker/issues/1035
   - Like which one are we supposed to use?
     - What I'm understanding is that they've since patched docker-nvidia2, so that is now a "thin" wrappper around the toolkit. So maybe it does not matter.
-    - My `/etc/docker/daemon.json` file does not have the nvidia runtime installed from `nvidia-docker2`, however calling docker with `--gpu` flag works. How do you use this flag on docker swarm? 
+    - My `/etc/docker/daemon.json` file does not have the nvidia runtime installed from `nvidia-docker2`, however calling `docker run` with `--gpu` flag works. How do you use this flag on docker swarm? 
 
 ## Toolchain
 - python `3.9.9`
