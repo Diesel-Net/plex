@@ -28,26 +28,27 @@ trigger:
 # ---
 # kind: pipeline
 # type: docker
-# name: deploy (production)
+# name: deploy
 
-# steps:
-#   - name: deploy plex media server
-#     image: plugins/ansible:3
-#     environment:
-#       ANSIBLE_CONFIG: .ansible/ansible.cfg
-#     settings:
-#       galaxy: .ansible/roles/requirements.yaml
-#       inventory: .ansible/inventories/production
-#       playbook: .ansible/deploy.yaml
-#       private_key:
-#         from_secret: automation_id_rsa
-#       vault_password:
-#         from_secret: ansible_vault_password
-#       extra_vars: version=production
+#   steps:
+#     - name: deploy plex media server
+#       image: plugins/ansible:3
+#       environment:
+#         ANSIBLE_CONFIG: .ansible/ansible.cfg
+#         PLEX_CLAIM_TOKEN:
+#           from_secret: plex_claim_token
+#       settings:
+#         galaxy: .ansible/roles/requirements.yaml
+#         inventory: .ansible/inventories/production
+#         playbook: .ansible/deploy.yaml
+#         private_key:
+#           from_secret: automation_id_rsa
+#         vault_password:
+#           from_secret: ansible_vault_password
 
 # trigger:
 #   event:
 #     - push
 #   branch:
 #     - stable
-...
+# ...
