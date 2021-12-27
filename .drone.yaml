@@ -1,30 +1,3 @@
-# ---
-# kind: pipeline
-# type: docker
-# name: deploy (development)
-
-# steps:
-#   - name: deploy plex media server
-#     image: plugins/ansible:3
-#     environment:
-#       ANSIBLE_CONFIG: .ansible/ansible.cfg
-#       PLEX_CLAIM_TOKEN:
-#         from_secret: plex_claim_token
-#     settings:
-#       galaxy: .ansible/roles/requirements.yaml
-#       inventory: .ansible/inventories/development
-#       playbook: .ansible/deploy.yaml
-#       private_key:
-#         from_secret: automation_id_rsa
-#       vault_password:
-#         from_secret: ansible_vault_password
-
-# trigger:
-#   event:
-#     - push
-#   branch:
-#     - development
-
 ---
 kind: pipeline
 type: docker
@@ -45,10 +18,11 @@ name: deploy
           from_secret: automation_id_rsa
         vault_password:
           from_secret: ansible_vault_password
+        extra_vars: version=production
 
 trigger:
   event:
     - push
   branch:
-    - stable
+    - development
 ...
