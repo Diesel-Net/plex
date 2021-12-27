@@ -1,7 +1,7 @@
 [![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/plex/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/plex)
 
 # plex
-Plex Media Server on Docker Swarm running on headless Ubuntu Server. The virtual host is running on Proxmox VE hypervisor and was bootstrapped with [swarm-bootstrapper](https://github.com/Diesel-Net/swarm-bootstrapper). An **Nvidia Quadro P2200** has been [configured for use with docker](https://github.com/NVIDIA/nvidia-docker) on the host. This allows me to use the GPU's compute/transcoder with other containers concurrently with plex! :tada:
+Plex Media Server on Docker Swarm running on Ubuntu. The virtual host is running on Proxmox VE hypervisor and was bootstrapped with [swarm-bootstrapper](https://github.com/Diesel-Net/swarm-bootstrapper). An **Nvidia Quadro P2200** has been [configured for use with docker](https://github.com/NVIDIA/nvidia-docker) on the host. This allows me to use the GPU's compute/transcoder with other containers concurrently with plex! :tada:
 
 ## Features/Notes
 - [x] Proxmox VE [PCIe Passthrough](https://pve.proxmox.com/wiki/PCI(e)_Passthrough)
@@ -15,7 +15,7 @@ Plex Media Server on Docker Swarm running on headless Ubuntu Server. The virtual
 - [x] Factored-out Plex Media Server configuration
 
 ## Confusion with Nvidia GPUs on Docker Swarm
-Nvidia-gpu support of docker swarm is **not clearly documented** and caused me quite the headache. I still don't fully understand if `nvidia-docker2` is deprecated or not-recommended or what. I personally feel that the reason for all the confusion is due to the fact that there are essentially 3 main ways to start docker containers with automation tooling, i.e. `docker run`, `docker-compose up`, and `docker stack deploy` (swarm mode). Most of the documentation seems old and mainly deals with being able to start containers with the first two options, however I was able to get everything functioning in Docker Swarm by installing `nvidia-docker2` and then configuring `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and that's it. As long as you pass the [appropriate environment variables](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#environment-variables-oci-spec), namely (NVIDIA_VISIABLE_DEVICES, and NVIDIA_DRIVER_CAPABILITIES) you should be good to go hopefully :thumbsup:
+Nvidia GPU support on docker swarm is **not clearly documented** and caused me quite the headache. I still don't fully understand if `nvidia-docker2` is deprecated or not-recommended or what. I personally feel that the reason for all the confusion is due to the fact that there are essentially 3 main ways to start docker containers with automation tooling, i.e. `docker run`, `docker-compose up`, and `docker stack deploy` (swarm mode). Most of the documentation seems old and mainly deals with being able to start containers with the first two options, however I was able to get everything functioning in Docker Swarm by installing `nvidia-docker2` and then configuring `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and that's it. As long as you pass the [appropriate environment variables](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#environment-variables-oci-spec), namely (NVIDIA_VISIABLE_DEVICES, and NVIDIA_DRIVER_CAPABILITIES) you should be good to go hopefully :thumbsup:
 
 - Docker
   - [swarmkit #1244](https://github.com/docker/swarmkit/issues/1244)
