@@ -14,23 +14,19 @@ services:
       - TZ={{ local_timezone }}
       - PLEX_CLAIM={{ plex_claim_token }}
       - ADVERTISE_IP=http://{{ ansible_default_ipv4['address'] }}:{{ plex_web_port }}/
-      - NVIDIA_DRIVER_CAPABILITIES=compute,video,utility
+      - NVIDIA_DRIVER_CAPABILITIES=video,utility
       - NVIDIA_VISIBLE_DEVICES=all
-      - CUDA_DRIVER_CAPABILITIES=compute,video,utility
     volumes:
       - {{ config_dir }}:/config
       - {{ data_dir }}:/transcode
       - nas-media:/data:ro
-    #devices:
-      #- /dev/dri/by-path/pci-{{ nvidia_pci_device_id }}-card:/dev/dri/card0
-      #- /dev/dri/by-path/pci-{{ nvidia_pci_device_id }}-render:/dev/dri/renderD128
 
 volumes:
   nas-media:
     driver: local
     driver_opts:
-      # requires `nfs-common` on debian
+      # requires `nfs-common` on Debian
       # OR `nfs-client` on CentOS/Fedora
       type: nfs
-      o: addr=192.168.50.99,ro,nfsvers=4,async
-      device: :/volume1/Media
+      o: addr={{ nfs_host }},ro,nfsvers=4,async
+      device: :{{ nfs_path }}
