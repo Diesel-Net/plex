@@ -24,6 +24,6 @@ trigger:
   event:
     - push
   branch:
-    - development
+    - stable
 
 ...
