@@ -1,4 +1,6 @@
+# only expose this port through WAN firewall, additional ports for LAN services
 plex_web_port: 32400
+
 plex_ports:
   - host: "{{ plex_web_port }}"
     docker: 32400
