@@ -43,11 +43,11 @@ pip3 install --user ansible
 ```
 
 1. Install Ansible Dependencies (external roles)
-```bash
-ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
-```
+   ```bash
+   ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
+   ```
 2. Configure and Deploy
-You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
-```bash
-ansible-playbook .ansible/update.yaml -i .ansible/inventories/development
-```
+   You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
+   ```bash
+   ansible-playbook .ansible/update.yaml -i .ansible/inventories/development
+   ```
