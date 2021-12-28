@@ -13,7 +13,7 @@ Plex Media Server on Docker Swarm, bootstrapped with [swarm-bootstrapper](https:
 - [x] Factored-out library (using docker [NFSv4 volume](https://docs.docker.com/storage/volumes/#create-a-service-which-creates-an-nfs-volume))
 - [x] Factored-out Plex Media Server configuration
 
-## Confusion with Nvidia GPUs on Docker Swarm
+## Notes on Nvidia GPUs on Docker Swarm
 After installing `nvidia-docker2` I had to manually configure `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and then pass the [appropriate environment variables](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#environment-variables-oci-spec), namely `NVIDIA_VISIABLE_DEVICES`, and `NVIDIA_DRIVER_CAPABILITIES`.
 
 - Docker
