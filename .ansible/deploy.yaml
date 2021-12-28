@@ -31,3 +31,5 @@
     - include_role:
         name: docker
         tasks_from: stack_deploy
+      vars:
+        docker_compose_template: docker-compose.yaml.j2

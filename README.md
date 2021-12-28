@@ -49,5 +49,5 @@ pip3 install --user ansible
 2. Configure and Deploy
    You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
    ```bash
-   ansible-playbook .ansible/update.yaml -i .ansible/inventories/development
+   ansible-playbook .ansible/deploy.yaml -i .ansible/inventories/production
    ```
