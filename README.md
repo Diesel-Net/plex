@@ -6,7 +6,6 @@ Plex Media Server on Docker Swarm, bootstrapped with [swarm-bootstrapper](https:
 ## Features/Notes
 - [x] Proxmox VE [PCIe Passthrough](https://pve.proxmox.com/wiki/PCI(e)_Passthrough) (Nvidia Quadro P2200)
 - [x] [Ubuntu Server 20.04.3 LTS](https://releases.ubuntu.com/20.04/) (Focal Fossa)
-- [x] [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [x] Nvidia Driver installation (see [Diesel-Net/ansible-role-ubuntu](https://github.com/Diesel-Net/ansible-role-ubuntu/blob/stable/tasks/install_nvidia_drivers.yaml))
 - [x] [Nvidia Container Toolkit](https://github.com/NVIDIA/nvidia-docker) installation (see [Diesel-Net/ansible-role-docker](https://github.com/Diesel-Net/ansible-role-docker/blob/stable/tasks/install_nvidia_toolkit.yaml))
 - [x] Official [Plex Media Server docker image](https://github.com/plexinc/pms-docker)
@@ -15,8 +14,7 @@ Plex Media Server on Docker Swarm, bootstrapped with [swarm-bootstrapper](https:
 - [x] Factored-out Plex Media Server configuration
 
 ## Confusion with Nvidia GPUs on Docker Swarm
-After installing `nvidia-docker2` and I had to manually configure `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and then pass the [appropriate environment variables](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#environment-variables-oci-spec), namely `NVIDIA_VISIABLE_DEVICES`, and `NVIDIA_DRIVER_CAPABILITIES` s:thumbsup:
-
+After installing `nvidia-docker2` I had to manually configure `/etc/docker/daemon.json` to use the `nvidia` runtime by default for the host, and then pass the [appropriate environment variables](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/user-guide.html#environment-variables-oci-spec), namely `NVIDIA_VISIABLE_DEVICES`, and `NVIDIA_DRIVER_CAPABILITIES`.
 
 - Docker
   - [swarmkit #1244](https://github.com/docker/swarmkit/issues/1244)
