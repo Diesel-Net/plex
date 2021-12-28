@@ -1,10 +1,10 @@
 [![Build Status](https://drone.kiwi-labs.net/api/badges/Diesel-Net/plex/status.svg)](https://drone.kiwi-labs.net/Diesel-Net/plex)
 
 # plex
-Plex Media Server on Docker Swarm, bootstrapped with [swarm-bootstrapper](https://github.com/Diesel-Net/swarm-bootstrapper). Gpu Passthrough via on Proxmox.
+Plex Media Server on Docker Swarm, bootstrapped with [swarm-bootstrapper](https://github.com/Diesel-Net/swarm-bootstrapper).
 
 ## Features/Notes
-- [x] Proxmox VE [PCIe Passthrough](https://pve.proxmox.com/wiki/PCI(e)_Passthrough)
+- [x] Proxmox VE [PCIe Passthrough](https://pve.proxmox.com/wiki/PCI(e)_Passthrough) (Nvidia Quadro P2200)
 - [x] [Ubuntu Server 20.04.3 LTS](https://releases.ubuntu.com/20.04/) (Focal Fossa)
 - [x] [Docker Swarm](https://docs.docker.com/engine/swarm/)
 - [x] Nvidia Driver installation (see [Diesel-Net/ansible-role-ubuntu](https://github.com/Diesel-Net/ansible-role-ubuntu/blob/stable/tasks/install_nvidia_drivers.yaml))
