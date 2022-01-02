@@ -20,7 +20,6 @@ services:
       - {{ config_dir }}:/config
       - {{ data_dir }}:/transcode
       - nas-media:/data:ro
-    pid: host # https://github.com/Diesel-Net/plex/issues/14
 
 volumes:
   nas-media:
