@@ -24,6 +24,7 @@ After installing `nvidia-docker2` I had to manually configure `/etc/docker/daemo
 - Nvidia
   - [nvidia-docker #1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
   - [nvidia-docker #1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
+  - [nvidia-docker #1575](https://github.com/NVIDIA/nvidia-docker/issues/1575)
 - Other
   - [Super insightful Hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
     - Outdated as most of the stuff no longer applies, but helped with understanding the need to set `daemon.json` manually
