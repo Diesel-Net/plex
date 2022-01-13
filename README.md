@@ -24,30 +24,35 @@ After installing `nvidia-docker2` I had to manually configure `/etc/docker/daemo
 - Nvidia
   - [nvidia-docker #1268](https://github.com/NVIDIA/nvidia-docker/issues/1268)
   - [nvidia-docker #1035](https://github.com/NVIDIA/nvidia-docker/issues/1035)
+  - [nvidia-docker #1575](https://github.com/NVIDIA/nvidia-docker/issues/1575)
 - Other
   - [Super insightful Hack](https://gist.github.com/tomlankhorst/33da3c4b9edbde5c83fc1244f010815c)
-    - Outdated as most of the stuff no longer applies, but helped with understanding the need to set `daemon.json` manually
+    - Outdated as most of the stuff no longer applies, but helped with understanding the need/how to set `daemon.json` manually
   - Python on Whale's user guide - [Generic Resources on Docker Swarm](https://gabrieldemarmiesse.github.io/python-on-whales/user_guide/generic_resources/)
     - helped me understand generic swarmkit resources, which seemed to be the old "hacky way", but restricts a GPU (or any device) to a single swarm service
 - [Accessing GPU's from a Docker Swarm Service](http://cowlet.org/2018/05/21/accessing-gpus-from-a-docker-swarm-service.html)
   - Outdated or no longer applies, but still insightful
    
 
-## Manual Deployments
-The below is set up to automatically configure and deploy using Drone CI, however you may use these commands to manually test and deploy or make changes if needed.
+## Deployments
+This application is configured and deployed automatically with [Drone CI](https://github.com/harness/drone) and [Ansible](https://github.com/ansible/ansible), however there might be situations where you would prefer to run the Ansible playbooks manually. 
+
+You will need to have the [Ansible Vault](https://docs.ansible.com/ansible/latest/user_guide/vault.html#encrypting-content-with-ansible-vault) password file configured on your machine, if there are any vaulted variables in the inventory. Please read the relevant ansible documentation on [setting a default password source](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source).
+
+If you are trying to reuse this Ansible configuration for _your own_ purposes, then you will need to encrypt all of _your own_ secrets using _your own_ Ansible Vault password and replace those variables in the [Ansible configuration](.ansible) after forking/cloning.
 
 ### Requirements
-Recommended way to install Ansible is with `pip` for `Python3.9+`. Ansible `5.0.1` was used at the time of this writing.
+I recommend [installing Ansible](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html#installing-ansible) with `pip` (globally) versus other package managers like `apt` or `brew`. It makes upgrading and using third party modules much easier. If you are on Windows, I would also recommend installing Ansible onto the WSL filesystem instead of the Windows filesytem. 
 ```bash
-pip3 install --user ansible
+python3 -m pip install --user ansible
 ```
 
-1. Install Ansible Dependencies (external roles)
+### Steps
+1. Install [Ansible roles](https://docs.ansible.com/ansible/latest/user_guide/playbooks_reuse_roles.html) (playbook dependencies). This will download the roles defined in [requirements.yaml](.ansible/roles/requirements.yaml) and place them into `.ansible/roles` for you.
    ```bash
    ansible-galaxy install -r .ansible/roles/requirements.yaml -p .ansible/roles --force
    ```
-2. Configure and Deploy
-   You will need to have the ansible-vault password file configured on your machine. Please read the relevant [ansible documentation](https://docs.ansible.com/ansible/latest/user_guide/vault.html#setting-a-default-password-source) for more information.
+2. Run [Ansible playbook](https://docs.ansible.com/ansible/latest/user_guide/playbooks_intro.html) against the `production` inventory.
    ```bash
    ansible-playbook .ansible/deploy.yaml -i .ansible/inventories/production
    ```
