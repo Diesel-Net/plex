@@ -4,10 +4,6 @@ services:
   media-server:
     image: plexinc/pms-docker:public
     hostname: {{ plex_host }}
-    ports:
-{% for port in plex_ports %}
-      - {{ port['host'] }}:{{ port['docker'] }}/{{ port['proto'] }}
-{% endfor %}
     environment:
       - PLEX_UID={{ plex_user_id }}
       - PLEX_GID={{ plex_group_id }}
