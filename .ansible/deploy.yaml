@@ -15,12 +15,12 @@
     - name: allow ports through firewall on host
       ufw:
         rule: allow
-        port: "{{ port['host'] }}"
-        proto: "{{ port['proto'] }}"
+        port: "{{ item['port'] }}"
+        proto: "{{ item['proto'] }}"
       become: yes
       loop: "{{ plex_ports }}"
       loop_control:
-        loop_var: port
+        loop_var: item
 
     - name: reload firewall and enable at boot
       ufw:
