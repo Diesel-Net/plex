@@ -20,6 +20,8 @@ services:
       - {{ config_dir }}:/config
       - {{ data_dir }}:/transcode
       - nas-media:/data:ro
+    networks:
+      hostnet: {}
 
 volumes:
   nas-media:
@@ -30,3 +32,8 @@ volumes:
       type: nfs
       o: addr={{ nfs_host }},ro,nfsvers=4,async
       device: :{{ nfs_path }}
+
+networks:
+  hostnet:
+    external: true
+    name: host
