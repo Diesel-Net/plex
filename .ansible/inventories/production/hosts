@@ -3,7 +3,7 @@ all:
 
     plex:
       hosts:
-        gpu.diesel.net:
+        quadro.diesel.net:
 
   vars:
     ansible_user: automation
