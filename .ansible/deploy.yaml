@@ -1,15 +1,15 @@
 - hosts: plex
   roles:
-    - common
+    - application
 
   tasks:
 
     - include_role:
-        name: common
+        name: application
         tasks_from: make_config_dir
 
     - include_role:
-        name: common
+        name: application
         tasks_from: make_data_dir
     
     - name: allow ports through firewall on host
