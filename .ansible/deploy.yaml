@@ -1,4 +1,4 @@
-- hosts: plex
+- hosts: swarm_manager
   roles:
     - application
 
