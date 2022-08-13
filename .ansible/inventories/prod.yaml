@@ -1,0 +1,46 @@
+all:
+  children:
+
+    swarm_manager:
+      hosts:
+        quadro.diesel.net:
+
+  vars:
+
+    nfs_host: nas.diesel.net
+    nfs_path: /volume1/Media
+
+    # only expose this port through WAN firewall, additional ports for LAN services
+    plex_web_port: 32400
+
+    plex_ports:
+      - port: "{{ plex_web_port }}"
+        proto: tcp
+      - port: 1900
+        proto: udp
+      - port: 3005
+        proto: tcp
+      - port: 5353
+        proto: udp
+      - port: 8324
+        proto: tcp
+      - port: 32410
+        proto: udp
+      - port: 32412
+        proto: udp
+      - port: 32413
+        proto: udp
+      - port: 32414
+        proto: udp
+      - port: 32469
+        proto: tcp
+
+    plex_user_id: "{{ ansible_user_uid }}"
+    plex_group_id: "{{ ansible_user_gid }}"
+
+    plex_host: '{{ inventory_hostname }}'
+    local_timezone: America/Los_Angeles
+    plex_claim_token: "{{ lookup('env','CLAIM_TOKEN') }}"
+
+    ansible_user: automation
+    ansible_python_interpreter: /usr/bin/python3
