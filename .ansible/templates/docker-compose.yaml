@@ -13,8 +13,8 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=video,utility
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - {{ config_dir }}:/config
-      - {{ data_dir }}:/transcode
+      - {{ data_dir }}/persistent:/config
+      - {{ data_dir }}/transient:/transcode
       - nas-media:/data:ro
     networks:
       hostnet: {}
