@@ -13,8 +13,8 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=video,utility
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - {{ data_dir }}:/transcode # transient
-      - plex-data:/config:rw
+      - {{ config_dir }}:/transcode # transient
+      - {{ data_dir }}:/config:rw
       - plex-media:/data:ro
     networks:
       hostnet: {}
@@ -33,8 +33,6 @@ volumes:
   plex-media:
     driver: local
     driver_opts:
-      # requires `nfs-common` on Debian
-      # OR `nfs-client` on CentOS/Fedora
       type: nfs
       o: addr={{ nfs_host }},ro,nfsvers=4,async
       device: :{{ nfs_media_path }}
