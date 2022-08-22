@@ -8,7 +8,8 @@ all:
   vars:
 
     nfs_host: nas.diesel.net
-    nfs_path: /volume1/Media
+    nfs_media_path: /volume1/Media
+    nfs_data_path: /volume1/Plex
 
     # only expose this port through WAN firewall, additional ports for LAN services
     plex_web_port: 32400
