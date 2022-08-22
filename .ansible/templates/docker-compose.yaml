@@ -14,7 +14,7 @@ services:
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       #- {{ data_dir }}:/transcode # transient
-      - {{ data_dir }}:/config
+      - plex-data:/config:rw
       - plex-media:/data:ro
     networks:
       hostnet: {}
@@ -35,7 +35,7 @@ volumes:
       # requires `nfs-common` on Debian
       # OR `nfs-client` on CentOS/Fedora
       type: nfs
-      o: addr={{ nfs_host }},rw,nfsvers=4,async
+      o: addr={{ nfs_host }},soft,no-lock,rw,nfsvers=4,async
       device: :{{ nfs_data_path }}
 
 networks:
