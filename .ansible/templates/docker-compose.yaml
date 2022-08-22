@@ -15,12 +15,12 @@ services:
     volumes:
       - {{ data_dir }}/persistent:/config
       - {{ data_dir }}/transient:/transcode
-      - nas-media:/data:ro
+      - plex-media:/data:ro
     networks:
       hostnet: {}
 
 volumes:
-  nas-media:
+  plex-media:
     driver: local
     driver_opts:
       # requires `nfs-common` on Debian
