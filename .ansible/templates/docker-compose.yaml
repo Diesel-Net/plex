@@ -20,6 +20,16 @@ services:
       hostnet: {}
 
 volumes:
+  
+  plex-data:
+    driver: local
+    driver_opts:
+      # requires `nfs-common` on Debian
+      # OR `nfs-client` on CentOS/Fedora
+      type: nfs
+      o: addr={{ nfs_host }},rw,nfsvers=4,async
+      device: :{{ nfs_data_path }}
+
   plex-media:
     driver: local
     driver_opts:
@@ -28,15 +38,6 @@ volumes:
       type: nfs
       o: addr={{ nfs_host }},ro,nfsvers=4,async
       device: :{{ nfs_media_path }}
-
-  plex-data:
-    driver: local
-    driver_opts:
-      # requires `nfs-common` on Debian
-      # OR `nfs-client` on CentOS/Fedora
-      type: nfs
-      o: addr={{ nfs_host }},soft,no-lock,rw,nfsvers=4,async
-      device: :{{ nfs_data_path }}
 
 networks:
   hostnet:
