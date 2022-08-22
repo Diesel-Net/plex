@@ -13,7 +13,7 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=video,utility
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      #- {{ data_dir }}:/transcode # transient
+      - {{ data_dir }}:/transcode # transient
       - plex-data:/config:rw
       - plex-media:/data:ro
     networks:
