@@ -13,14 +13,14 @@ services:
       - NVIDIA_DRIVER_CAPABILITIES=video,utility
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - {{ config_dir }}:/config # this contains important server data!
-      - {{ data_dir }}:/transcode
-      - nas-media:/data:ro
+      - {{ data_dir }}/persistent:/config
+      - {{ data_dir }}/transient:/transcode
+      - plex-media:/data:ro
     networks:
       hostnet: {}
 
 volumes:
-  nas-media:
+  plex-media:
     driver: local
     driver_opts:
       # requires `nfs-common` on Debian
