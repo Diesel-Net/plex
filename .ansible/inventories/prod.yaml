@@ -7,10 +7,6 @@ all:
 
   vars:
 
-    proxy_hostname: plex.kiwi-labs.net
-    proxy_cert_main: kiwi-labs.net
-    proxy_cert_sans: '*.kiwi-labs.net'
-
     nfs_host: nas.diesel.net
     nfs_media_path: /volume1/Media
     nfs_data_path: /volume1/Plex
