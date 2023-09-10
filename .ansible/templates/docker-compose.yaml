@@ -16,18 +16,8 @@ services:
       - {{ config_dir }}:/transcode # transient
       - {{ data_dir }}:/config:rw
       - plex-media:/data:ro
-    deploy:
-      labels:
-        - traefik.enable=true
-        - traefik.http.services.{{ app_name }}-{{ version }}.loadbalancer.server.port=32400
-        - traefik.http.routers.{{ app_name }}-{{ version }}.rule=Host(`{{ proxy_hostname }}`)
-        - traefik.http.routers.{{ app_name }}-{{ version }}.tls.certresolver=cloudflare
-        - traefik.http.routers.{{ app_name }}-{{ version }}.tls.domains[0].main={{ proxy_cert_main }}
-        - traefik.http.routers.{{ app_name }}-{{ version }}.tls.domains[0].sans={{ proxy_cert_sans }}
-        - traefik.http.routers.{{ app_name }}-{{ version }}.service={{ app_name }}-{{ version }}
     networks:
       - host-net
-      - traefik-net
 
 volumes:
 
@@ -42,6 +32,3 @@ networks:
   host-net:
     external: true
     name: host
-  traefik-net:
-    external: true
-    name: '{{ traefik_network }}'
