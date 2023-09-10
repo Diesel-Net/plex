@@ -1,6 +1,7 @@
 - hosts: swarm_manager
   roles:
     - application
+    - traefik
 
   tasks:
 
